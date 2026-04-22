@@ -123,10 +123,7 @@ export default function InsightTab() {
                     )}
                   </div>
                 </div>
-                <div className="isc-comment">
-                  {skill.rating_support_comments.slice(0, 240)}
-                  {skill.rating_support_comments.length > 240 ? "…" : ""}
-                </div>
+                <div className="isc-comment">{skill.rating_support_comments}</div>
               </div>
             );
           })}
@@ -170,30 +167,29 @@ export default function InsightTab() {
                     )}
                   </div>
                 </div>
-                <div className="isc-comment">
-                  {skill.rating_support_comments.slice(0, 240)}
-                  {skill.rating_support_comments.length > 240 ? "…" : ""}
-                </div>
+                <div className="isc-comment">{skill.rating_support_comments}</div>
               </div>
             );
           })}
         </div>
       </div>
 
-      <div className="insight-gap-section" style={{ paddingBottom: 32 }}>
-        <h3 className="insight-col-title">Promotion Gap Summary</h3>
-        <div className="gap-rows">
-          <div className="gap-row">
-            <span className="gap-label">Current Role:</span>
-            <span className="gap-text">
-              {ic.scoring_summary.promotion_gap_current_role}
-            </span>
-          </div>
-          <div className="gap-row">
-            <span className="gap-label">Next Role:</span>
-            <span className="gap-text">
-              {ic.scoring_summary.promotion_gap_next_role}
-            </span>
+      <div className="insight-footer">
+        <div className="insight-gap-section">
+          <h3 className="insight-col-title">Promotion Gap Summary</h3>
+          <div className="gap-rows">
+            <div className="gap-row">
+              <span className="gap-label">Current Role:</span>
+              <span className="gap-text">
+                {ic.scoring_summary.promotion_gap_current_role}
+              </span>
+            </div>
+            <div className="gap-row">
+              <span className="gap-label">Next Role:</span>
+              <span className="gap-text">
+                {ic.scoring_summary.promotion_gap_next_role}
+              </span>
+            </div>
           </div>
         </div>
       </div>

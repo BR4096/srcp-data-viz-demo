@@ -44,7 +44,7 @@ p  { margin: 0; }
 }
 .tabs button:hover:not(.active) { color: #334155; }
 
-.tab-content { max-width: 1100px; margin: 0 auto; padding: 0 16px 40px; }
+.tab-content { max-width: 1100px; margin: 0 auto; padding: 0 0 40px; }
 
 .tab-subtitle { color: #64748b; font-size: 13px; margin-bottom: 16px; }
 
@@ -246,6 +246,9 @@ p  { margin: 0; }
   background: #fffdf7;
   min-height: 500px;
 }
+.insight-footer {
+  padding: 0 28px 40px;
+}
 .insight-topbar {
   padding: 22px 28px 16px;
   border-bottom: 1px solid #fde68a;
@@ -314,12 +317,11 @@ p  { margin: 0; }
 .isc-comment { font-size: 12px; color: #475569; line-height: 1.5; }
 
 .insight-gap-section {
-  margin: 0 28px 24px; padding: 16px 18px;
+  margin: 0; padding: 16px 18px;
   background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;
 }
 .gap-rows { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
 .gap-row { display: flex; gap: 10px; align-items: baseline; }
-.gap-bottom-spacer { height: 16px; }
 .gap-label { font-size: 12px; font-weight: 700; color: #374151; width: 100px; flex-shrink: 0; }
 .gap-text  { font-size: 13px; color: #1e293b; }
 
@@ -366,6 +368,7 @@ p  { margin: 0; }
   gap: 16px; flex-wrap: wrap;
 }
 .app-header h1 { padding: 0; font-size: 18px; }
+.app-version { font-size: 11px; color: #94a3b8; letter-spacing: 0.04em; margin-top: 2px; display: block; }
 
 .file-loader { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .drop-zone {
@@ -478,6 +481,7 @@ p  { margin: 0; }
   .stats-cards { grid-template-columns: repeat(2, 1fr); }
   .team-card .stats-cards { grid-template-columns: 1fr 1fr; }
   .chart-controls { flex-wrap: wrap; }
+  .insight-footer { padding: 0 20px 24px; }
 }
 
 /* ── E4: Print view ── */
@@ -507,7 +511,8 @@ p  { margin: 0; }
   .insight-skill-card { break-inside: avoid; }
   .insight-skill-card.strength { background: #f0fff0 !important; border-color: #aaa !important; }
   .insight-skill-card.coaching { background: #fffdf0 !important; border-color: #aaa !important; }
-  .insight-gap-section { margin: 0 0 12px; }
+  .insight-footer { padding: 0 0 12px; }
+  .insight-gap-section { margin: 0; }
   .isc-rating { color: #000 !important; }
   .isc-trend  { color: #000 !important; }
 
