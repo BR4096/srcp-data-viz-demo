@@ -103,7 +103,32 @@ p  { margin: 0; }
 .viz-header h2 { color: #f8fafc; }
 .viz-header .tab-subtitle { color: #94a3b8; }
 
-.ic-selector { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+/* Mode toggle */
+.viz-mode-toggle {
+  display: flex;
+  gap: 0;
+  margin-top: 14px;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  overflow: hidden;
+  width: fit-content;
+}
+.viz-mode-btn {
+  padding: 7px 18px;
+  border: none;
+  background: #1e293b;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.03em;
+}
+.viz-mode-btn + .viz-mode-btn { border-left: 1px solid #334155; }
+.viz-mode-btn.active { background: #6366f1; color: #fff; }
+.viz-mode-btn:hover:not(.active) { background: #273344; color: #cbd5e1; }
+
+.ic-selector { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
 .ic-btn {
   display: flex; flex-direction: column; align-items: flex-start;
   padding: 8px 16px;
@@ -115,10 +140,37 @@ p  { margin: 0; }
   font-size: 13px;
   font-weight: 600;
   transition: all 0.15s;
+  position: relative;
 }
 .ic-btn .ic-btn-role { font-size: 10px; font-weight: 400; margin-top: 1px; }
 .ic-btn.active { color: #fff; }
 .ic-btn:not(.active):hover { border-color: #475569; color: #cbd5e1; }
+/* "primary" marker in Compare mode */
+.ic-btn-badge {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(255,255,255,0.25);
+  border-radius: 4px;
+  padding: 1px 5px;
+  margin-top: 3px;
+  color: #fff;
+}
+
+/* Team mode note */
+.viz-team-note {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 10px;
+}
+
+/* Inline IC label in chart card titles (Compare/Team) */
+.chart-ic-label {
+  font-weight: 400;
+  color: #94a3b8;
+  font-size: 13px;
+}
 
 .viz-body { padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 20px; }
 .viz-charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -446,6 +498,12 @@ p  { margin: 0; }
 
 /* ── Print button + topbar actions ── */
 .insight-topbar-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.share-btn {
+  padding: 6px 14px; border: 1.5px solid #fcd34d; border-radius: 6px;
+  background: #fff; color: #92400e; font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: all .15s; white-space: nowrap;
+}
+.share-btn:hover { background: #fef3c7; }
 .print-btn {
   padding: 6px 14px; border: 1.5px solid #fcd34d; border-radius: 6px;
   background: #fff; color: #92400e; font-size: 12px; font-weight: 700;
