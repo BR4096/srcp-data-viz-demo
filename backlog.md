@@ -1,5 +1,10 @@
 # Backlog
 
+## Enhancements
+
+### [ENHANCEMENT] PDF Report Export
+Export the current IC's Insight tab as a styled PDF. Options: browser print-to-PDF (already partially supported via print styles), or jsPDF client-side generation. Goal: produce a single-page summary usable in 1:1 meetings without opening the browser.
+
 ## Known Bugs
 
 ### [BUG] Promotion Gap Summary — bottom spacing has no effect

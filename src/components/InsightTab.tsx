@@ -3,11 +3,26 @@ import { useDataset } from "../context/DataContext";
 import PromotionGauge from "./PromotionGauge";
 import StatsCards from "./StatsCards";
 import { ratingColor, trendArrow } from "../utils/groupByCategory";
+import type { SrcpReport } from "../data";
+
+function encodeReport(report: SrcpReport): string {
+  return btoa(encodeURIComponent(JSON.stringify(report)));
+}
 
 export default function InsightTab() {
   const { dataset } = useDataset();
   const [selectedIC, setSelectedIC] = useState(0);
+  const [shareLabel, setShareLabel] = useState("⎘ Share");
   const ic = dataset[Math.min(selectedIC, dataset.length - 1)];
+
+  function handleShare() {
+    const encoded = encodeReport(ic);
+    window.location.hash = encoded;
+    const url = window.location.href;
+    navigator.clipboard.writeText(url).catch(() => {});
+    setShareLabel("Copied!");
+    setTimeout(() => setShareLabel("⎘ Share"), 2000);
+  }
 
   const sorted = [...ic.skills].sort((a, b) => b.current_rating - a.current_rating);
   const strengths = sorted.slice(0, 3);
@@ -36,6 +51,13 @@ export default function InsightTab() {
               </button>
             ))}
           </div>
+          <button
+            className="share-btn no-print"
+            onClick={handleShare}
+            aria-label="Share a link to this IC report"
+          >
+            {shareLabel}
+          </button>
           <button
             className="print-btn no-print"
             onClick={() => window.print()}
