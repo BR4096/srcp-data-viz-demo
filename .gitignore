@@ -21,6 +21,9 @@ dist-ssr/
 .vscode/
 .idea/
 
+# Server-side artifacts (deployed via rsync, not GitHub Actions)
+api/
+
 # Logs
 *.log
 npm-debug.log*

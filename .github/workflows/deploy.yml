@@ -5,6 +5,12 @@ on:
     branches: [main]
   workflow_dispatch:
 
+env:
+  DEPLOY_HOST: nickringle.com
+  DEPLOY_PORT: 2222
+  DEPLOY_USER: abr
+  DEPLOY_PATH: /home/abr/demo.nickringle.com/srcp
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -28,11 +34,11 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -p ${{ secrets.SSH_PORT }} -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+          ssh-keyscan -p $DEPLOY_PORT -H $DEPLOY_HOST >> ~/.ssh/known_hosts
 
       - name: Deploy via rsync
         run: |
           rsync -avz --delete \
-            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=no" \
+            -e "ssh -i ~/.ssh/deploy_key -p $DEPLOY_PORT -o StrictHostKeyChecking=no" \
             dist/ \
-            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/
+            $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/
