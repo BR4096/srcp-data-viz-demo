@@ -23,6 +23,7 @@ dist-ssr/
 
 # Server-side artifacts (deployed via rsync, not GitHub Actions)
 api/
+server/
 
 # Logs
 *.log
