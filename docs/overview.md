@@ -8,6 +8,7 @@ The SRCP (Structured Career Review Process) dashboard demo was built to evaluate
 
 ### Visualization Tab (65% data richness)
 - Dense chart placeholders per IC: radar (competencies), bar (scores by category), line (growth trend)
+- **IC overlay / radar compare** — Single / Compare / Team mode lets users overlay multiple IC radar charts for direct comparison
 - Goal: evaluate how visual variety aids comprehension across multiple data dimensions
 - Best for: stakeholders who want to see the full dataset at a glance
 
@@ -20,6 +21,7 @@ The SRCP (Structured Career Review Process) dashboard demo was built to evaluate
 ### Insight Tab (65% managerial utility)
 - Text-first: primary strength, development focus, and recommendations per IC
 - Pie chart placeholder for growth ratio
+- **Share link** — encodes the current IC report to a URL hash; auto-loads the correct IC on page open
 - Goal: evaluate how well the dashboard supports 1:1 preparation and coaching conversations
 - Best for: managers who need actionable summaries, not raw data
 
@@ -31,6 +33,11 @@ Three mock IC profiles:
 - **Kim Khan** — Data Analyst, L5→L6, highest collaboration (4.7) and strategic thinking (4.6)
 
 All data lives in `src/data.ts` as a typed TypeScript array.
+
+## Additional features
+
+- **Field-level JSON schema validation** — FileLoader shows a bulleted error list per missing required field when uploading IC data
+- **Version badge** — `v{version}` displayed in the app header, sourced from `package.json` at build time
 
 ## Next steps
 
