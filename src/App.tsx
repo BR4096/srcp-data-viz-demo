@@ -5,6 +5,7 @@ import VisualizationTab from "./components/VisualizationTab";
 import LayoutTab from "./components/LayoutTab";
 import InsightTab from "./components/InsightTab";
 import FileLoader from "./components/FileLoader";
+import { version } from "../package.json";
 import "./index.css";
 
 const TAB_LABELS = ["Visualization", "Layout", "Insight"];
@@ -23,10 +24,11 @@ function App() {
       <div className="App">
         <div className="app-header">
           <h1>SRCP Dashboard Comparison</h1>
+          <span className="app-version">v{version}</span>
           <FileLoader />
         </div>
         <Tabs tabs={TAB_LABELS} activeTab={activeTab} setActiveTab={setActiveTab} />
-        <div className="tab-content" style={{ padding: 0 }}>
+        <div className="tab-content">
           {tabComponents[activeTab]}
         </div>
       </div>
