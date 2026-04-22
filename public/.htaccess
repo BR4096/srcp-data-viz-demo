@@ -1,0 +1,6 @@
+Options -MultiViews
+RewriteEngine On
+RewriteBase /demo/srcp-data-viz-demo-app/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [QSA,L]
