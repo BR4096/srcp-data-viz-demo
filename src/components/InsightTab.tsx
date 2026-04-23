@@ -10,7 +10,7 @@ function encodeReport(report: SrcpReport): string {
 }
 
 export default function InsightTab() {
-  const { dataset } = useDataset();
+  const { dataset, annotations, annotationsLoading } = useDataset();
   const [selectedIC, setSelectedIC] = useState(0);
   const [shareLabel, setShareLabel] = useState("⎘ Share");
   const ic = dataset[Math.min(selectedIC, dataset.length - 1)];
@@ -114,6 +114,9 @@ export default function InsightTab() {
           <p className="insight-col-sub">Top-rated skills this cycle</p>
           {strengths.map((skill) => {
             const arrow = trendArrow(skill);
+            const refKey = String(skill.reference_number);
+            const quality = annotations[ic.metadata.employee_name]?.[refKey];
+            const isLoading = annotationsLoading.has(ic.metadata.employee_name);
             return (
               <div key={skill.reference_number} className="insight-skill-card strength">
                 <div className="isc-header">
@@ -146,6 +149,18 @@ export default function InsightTab() {
                   </div>
                 </div>
                 <div className="isc-comment">{skill.rating_support_comments}</div>
+                {isLoading && !quality && (
+                  <span className="quality-loading">Analyzing…</span>
+                )}
+                {quality && (
+                  <span className={`quality-badge quality-${quality}`}>
+                    {quality === "strong"
+                      ? "✓ Strong"
+                      : quality === "vague"
+                      ? "~ Vague"
+                      : "⚠ Needs Evidence"}
+                  </span>
+                )}
               </div>
             );
           })}
@@ -158,6 +173,9 @@ export default function InsightTab() {
           <p className="insight-col-sub">Development focus for next cycle</p>
           {coaching.map((skill) => {
             const arrow = trendArrow(skill);
+            const refKey = String(skill.reference_number);
+            const quality = annotations[ic.metadata.employee_name]?.[refKey];
+            const isLoading = annotationsLoading.has(ic.metadata.employee_name);
             return (
               <div key={skill.reference_number} className="insight-skill-card coaching">
                 <div className="isc-header">
@@ -190,6 +208,18 @@ export default function InsightTab() {
                   </div>
                 </div>
                 <div className="isc-comment">{skill.rating_support_comments}</div>
+                {isLoading && !quality && (
+                  <span className="quality-loading">Analyzing…</span>
+                )}
+                {quality && (
+                  <span className={`quality-badge quality-${quality}`}>
+                    {quality === "strong"
+                      ? "✓ Strong"
+                      : quality === "vague"
+                      ? "~ Vague"
+                      : "⚠ Needs Evidence"}
+                  </span>
+                )}
               </div>
             );
           })}

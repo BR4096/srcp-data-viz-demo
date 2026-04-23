@@ -1,3 +1,7 @@
+export type CommentQuality = "strong" | "vague" | "needs_evidence";
+// keyed by employee_name → reference_number (string) → quality
+export type AnnotationMap = Record<string, Record<string, CommentQuality>>;
+
 export interface SkillEntry {
   reference_number: number;
   prior_reference_number: string | number;
