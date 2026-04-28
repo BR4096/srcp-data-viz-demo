@@ -39,7 +39,7 @@ function CustomTooltip({
   return (
     <div className="chart-tooltip skill-tooltip">
       <div className="tooltip-title">{skill.description_context}</div>
-      <div className="tooltip-rating">Rating: {skill.current_rating} / 5</div>
+      <div className="tooltip-rating">Rating: {skill.current_rating} / 3</div>
       <div className="tooltip-comment">{preview}</div>
     </div>
   );
@@ -67,8 +67,8 @@ export default function SkillBarChart({ skills, height, sortOrder = "desc" }: Pr
         <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#e2e8f0" />
         <XAxis
           type="number"
-          domain={[0, 5]}
-          ticks={[0, 1, 2, 3, 4, 5]}
+          domain={[0, 3]}
+          ticks={[0, 1, 2, 3]}
           tick={{ fontSize: 11, fill: "#64748b" }}
         />
         <YAxis

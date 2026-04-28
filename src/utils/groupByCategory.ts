@@ -26,14 +26,14 @@ export function categoryAverages(
         entries.reduce((sum, e) => sum + e.current_rating, 0) / entries.length
       ).toFixed(1)
     ),
-    fullMark: 5,
+    fullMark: 3,
   }));
 }
 
 export function ratingColor(rating: number): string {
-  if (rating >= 4) return "#10b981";
-  if (rating >= 3) return "#6366f1";
-  if (rating >= 2) return "#f59e0b";
+  if (rating >= 3) return "#10b981";
+  if (rating >= 2) return "#6366f1";
+  if (rating >= 1) return "#f59e0b";
   return "#ef4444";
 }
 

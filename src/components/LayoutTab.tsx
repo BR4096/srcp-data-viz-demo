@@ -11,7 +11,7 @@ function RatingDot({ rating }: { rating: number }) {
     <span
       className="rating-dot"
       style={{ background: ratingColor(rating) }}
-      aria-label={`Rating ${rating} out of 5`}
+      aria-label={`Rating ${rating} out of 3`}
     >
       {rating}
     </span>
@@ -100,12 +100,12 @@ export default function LayoutTab() {
                       skills.length;
                     return (
                       <div key={cat} className="team-cat-row">
-                        <span className="team-cat-name">{cat}</span>
+                        <span className="team-cat-name" title={cat}>{cat}</span>
                         <div className="mini-bar-track">
                           <div
                             className="mini-bar-fill"
                             style={{
-                              width: `${(avg / 5) * 100}%`,
+                              width: `${(avg / 3) * 100}%`,
                               background: ratingColor(avg),
                             }}
                           />
@@ -172,9 +172,9 @@ export default function LayoutTab() {
                     aria-expanded={isOpen}
                     onClick={() => setExpandedCat(isOpen ? null : cat)}
                   >
-                    <span className="accordion-cat">{cat}</span>
+                    <span className="accordion-cat" title={cat}>{cat}</span>
                     <span className="accordion-meta">
-                      {skills.length} skill{skills.length !== 1 ? "s" : ""} · avg{" "}
+                      {skills.length} skill{skills.length !== 1 ? "s" : ""} · score{" "}
                       <strong style={{ color: ratingColor(avg) }}>
                         {avg.toFixed(1)}
                       </strong>

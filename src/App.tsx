@@ -5,10 +5,11 @@ import VisualizationTab from "./components/VisualizationTab";
 import LayoutTab from "./components/LayoutTab";
 import InsightTab from "./components/InsightTab";
 import FileLoader from "./components/FileLoader";
-import { version } from "../package.json";
 import "./index.css";
 import { useEffect } from "react";
 import type { SrcpReport } from "./data";
+
+const BUILD = "v1.2.0";
 
 const TAB_LABELS = ["Visualization", "Layout", "Insight"];
 
@@ -47,7 +48,6 @@ function App() {
       <div className="App">
         <div className="app-header">
           <h1>SRCP Dashboard Comparison</h1>
-          <span className="app-version">v{version}</span>
           <FileLoader />
         </div>
         <Tabs tabs={TAB_LABELS} activeTab={activeTab} setActiveTab={setActiveTab} />
@@ -55,6 +55,9 @@ function App() {
           {tabComponents[activeTab]}
         </div>
       </div>
+      <footer className="app-footer">
+        All data shown is mock -- no live data here.&nbsp;&nbsp;•&nbsp;&nbsp;<span className="version-pill">{BUILD}</span>
+      </footer>
     </DataProvider>
   );
 }

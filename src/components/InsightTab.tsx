@@ -79,14 +79,21 @@ export default function InsightTab() {
           </div>
         </div>
         <div className="insight-score-block">
-          <div className="insight-score-label">Current Role</div>
-          <div className="insight-score-pct">
-            {Math.round(ic.scoring_summary.current_role_percentage * 100)}%
-          </div>
-          <div className="insight-score-pts">
-            {ic.scoring_summary.total_current_role_points} /{" "}
-            {ic.scoring_summary.available_current_role_points} pts
-          </div>
+          {(() => {
+            const met = ic.current_role_summary.promotion_eligible;
+            return (
+              <>
+                <div className="insight-score-label" style={{ color: met ? "#34d399" : undefined }}>Current Role</div>
+                <div className="insight-score-pct"   style={{ color: met ? "#4ade80" : undefined }}>
+                  {Math.round(ic.scoring_summary.current_role_percentage * 100)}%
+                </div>
+                <div className="insight-score-pts"   style={{ color: met ? "#6ee7b7" : undefined }}>
+                  {ic.scoring_summary.total_current_role_points} /{" "}
+                  {ic.scoring_summary.available_current_role_points} pts
+                </div>
+              </>
+            );
+          })()}
         </div>
       </div>
 
@@ -106,6 +113,7 @@ export default function InsightTab() {
         {ic.promotion_status_note}
       </div>
 
+      <div className="insight-sc-panel">
       <div className="insight-columns">
         <div className="insight-column">
           <h3 className="insight-col-title strength-title">
@@ -121,7 +129,7 @@ export default function InsightTab() {
               <div key={skill.reference_number} className="insight-skill-card strength">
                 <div className="isc-header">
                   <div>
-                    <div className="isc-cat">{skill.skill_category}</div>
+                    <div className="isc-cat" title={skill.skill_category}>{skill.skill_category}</div>
                     <div className="isc-desc">{skill.description_context}</div>
                   </div>
                   <div className="isc-rating-block">
@@ -129,7 +137,7 @@ export default function InsightTab() {
                       className="isc-rating"
                       style={{ color: ratingColor(skill.current_rating) }}
                     >
-                      {skill.current_rating}/5
+                      {skill.current_rating}/3
                     </span>
                     {arrow !== "—" && (
                       <span
@@ -180,7 +188,7 @@ export default function InsightTab() {
               <div key={skill.reference_number} className="insight-skill-card coaching">
                 <div className="isc-header">
                   <div>
-                    <div className="isc-cat">{skill.skill_category}</div>
+                    <div className="isc-cat" title={skill.skill_category}>{skill.skill_category}</div>
                     <div className="isc-desc">{skill.description_context}</div>
                   </div>
                   <div className="isc-rating-block">
@@ -188,7 +196,7 @@ export default function InsightTab() {
                       className="isc-rating"
                       style={{ color: ratingColor(skill.current_rating) }}
                     >
-                      {skill.current_rating}/5
+                      {skill.current_rating}/3
                     </span>
                     {arrow !== "—" && (
                       <span
@@ -224,6 +232,7 @@ export default function InsightTab() {
             );
           })}
         </div>
+      </div>
       </div>
 
       <div className="insight-footer">

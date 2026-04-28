@@ -59,7 +59,7 @@ function CustomTooltip({
       <div className="tooltip-title">{fullSubject ?? ""}</div>
       {payload.map((p) => (
         <div key={p.name} className="tooltip-value" style={{ color: p.color }}>
-          {p.name}: {typeof p.value === "number" ? p.value.toFixed(1) : p.value} / 5
+          {p.name}: {typeof p.value === "number" ? p.value.toFixed(1) : p.value} / 3
         </div>
       ))}
     </div>
@@ -106,9 +106,9 @@ export default function CategoryRadarChart(props: Props) {
           tick={{ fontSize: 11, fill: axisColor, fontWeight: 600 }}
         />
         <PolarRadiusAxis
-          domain={[0, 5]}
+          domain={[0, 3]}
           tick={{ fontSize: 10, fill: tickColor }}
-          tickCount={6}
+          tickCount={4}
         />
         {series.map(({ color, label }) => (
           <Radar

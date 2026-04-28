@@ -97,7 +97,7 @@ export default function VisualizationTab() {
     const synthetic = teamAverageSkills(dataset.map((d) => d.skills));
     radarSeries = [{ skills: synthetic, color: TEAM_COLOR, label: "Team Avg" }];
     radarTitle = "Competency Profile — Team Average";
-    radarSub = "Mean category ratings across all ICs (0–5 scale)";
+    radarSub = "Mean category ratings across all ICs (0–3 scale)";
   } else if (viewMode === "compare") {
     radarSeries = compareICs.map((idx) => ({
       skills: dataset[idx].skills,
@@ -108,7 +108,7 @@ export default function VisualizationTab() {
       .map((i) => dataset[i].metadata.employee_name)
       .join(" vs ");
     radarTitle = `Competency Profile — ${names}`;
-    radarSub = "Category average ratings overlaid (0–5 scale)";
+    radarSub = "Category average ratings overlaid (0–3 scale)";
   } else {
     radarSeries = [
       {
@@ -118,7 +118,7 @@ export default function VisualizationTab() {
       },
     ];
     radarTitle = `Competency Profile — ${ic.metadata.employee_name}`;
-    radarSub = "Category average ratings (0–5 scale)";
+    radarSub = "Category average ratings (0–3 scale)";
   }
 
   // ── Compare toggle helpers ──
@@ -293,25 +293,25 @@ export default function VisualizationTab() {
               {skillsWithTrend.map((skill) => (
                 <div key={skill.reference_number} className="trend-card">
                   <div className="trend-card-meta">
-                    <span className="trend-skill-cat">{skill.skill_category}</span>
+                    <span className="trend-skill-cat" title={skill.skill_category}>{skill.skill_category}</span>
                     <span
                       className="trend-rating-badge"
                       style={{
                         background:
-                          skill.current_rating >= 4
+                          skill.current_rating >= 3
                             ? "#d1fae5"
-                            : skill.current_rating >= 3
+                            : skill.current_rating >= 2
                             ? "#e0e7ff"
                             : "#fef3c7",
                         color:
-                          skill.current_rating >= 4
+                          skill.current_rating >= 3
                             ? "#065f46"
-                            : skill.current_rating >= 3
+                            : skill.current_rating >= 2
                             ? "#3730a3"
                             : "#92400e",
                       }}
                     >
-                      {skill.current_rating}/5
+                      {skill.current_rating}/3
                     </span>
                   </div>
                   <div className="trend-skill-name">{skill.description_context}</div>
